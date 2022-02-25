@@ -21,6 +21,18 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'username',
+        'mobile',
+        'headline',
+        'bio',
+        'website',
+        'linkedin',
+        'facebook',
+        'twitter',
+        'youtube',
+        'instagram',
+        'telegram',
+        'status',
     ];
 
     /**
