@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Aydin0098\User\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -47,6 +47,12 @@ class LoginController extends Controller
             $mobile => $username,
             'password' => $request->get('password')
         ];
+
+    }
+
+    public function showLoginForm()
+    {
+        return view('User::Front.login');
 
     }
 }

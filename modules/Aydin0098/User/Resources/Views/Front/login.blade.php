@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('User::Front.layouts.app')
 @section('title','ورود به حساب کاربری')
 
 @section('content')

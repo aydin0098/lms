@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('User::Front.layouts.app')
 
 @section('content')
     <main>

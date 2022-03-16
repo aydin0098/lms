@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('modules.Aydin0098.User.Resources.Views.Front.layouts.app')
 
 @section('content')
 <div class="container">

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Aydin0098\User\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Models\User;
+use Aydin0098\User\Models\User;
+use Aydin0098\User\Rules\MobileValid;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -52,7 +53,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'mobile' => ['nullable', 'string', 'min:9', 'max:11', 'unique:users'],
+            'mobile' => ['nullable', 'string', 'max:11', 'unique:users',new MobileValid()],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -61,7 +62,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\User
+     * @return \Aydin0098\User\Models\User
      */
     protected function create(array $data)
     {
@@ -71,5 +72,10 @@ class RegisterController extends Controller
             'mobile' => $data['mobile'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    public function showRegistrationForm()
+    {
+        return view('User::Front.register');
     }
 }

@@ -1,20 +1,21 @@
-@extends('layouts.app')
+@extends('User::Front.layouts.app')
 
 @section('content')
     <main>
         <div class="account">
-            @if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-            @endif
+
             <form action="{{route('password.email')}}" class="form" method="post">
                 @csrf
                 <a class="account-logo" href="/">
                     <img src="{{asset('front/img/weblogo.png')}}" alt="">
                 </a>
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 <div class="form-content form-account">
-                    <input type="text" class="txt-l txt  @error('email') is-invalid @enderror " placeholder="ایمیل">
+                    <input type="text" name="email" class="txt-l txt  @error('email') is-invalid @enderror " placeholder="ایمیل">
                     @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
