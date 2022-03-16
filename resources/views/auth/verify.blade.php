@@ -1,28 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+    <main>
+        <div class="account">
 
-                <div class="card-body">
-                    @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
-                        </div>
-                    @endif
-
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
-                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
-                    </form>
+            <form action="{{ route('verification.resend') }}" class="form" method="post">
+                @csrf
+                <a class="account-logo" href="/">
+                    <img src="{{asset('front/img/weblogo.png')}}" alt="">
+                </a>
+                @if (session('resent'))
+                    <div class="alert alert-success" role="alert">
+                        قبل از ادامه دادن لطفا ایمیل خود را چک کنید و ان را تایید کنید اگر ایمیلی دریافت نکرده اید درخواست مجدد ارسال لینک دهید
+                    </div>
+                @endif
+                <div class="form-content form-account">
+                    <button type="submit" class="btn btn-recoverpass">ارسال مجدد لینک فعال سازی</button>
                 </div>
-            </div>
+                <div class="form-footer">
+                    <a href="{{route('login')}}">صفحه ورود</a>
+                </div>
+            </form>
         </div>
-    </div>
-</div>
+    </main>
 @endsection
