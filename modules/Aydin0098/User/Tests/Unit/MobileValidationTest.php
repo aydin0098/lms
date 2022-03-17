@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit;
+namespace Aydin0098\User\Tests\Unit;
 
 use Aydin0098\User\Rules\MobileValid;
 use PHPUnit\Framework\TestCase;
@@ -20,7 +20,7 @@ class MobileValidationTest extends TestCase
     }
     public function test_mobile_can_not_be_more_then_11_character()
     {
-        $result = (new MobileValid())->passes('','9398933139');
+        $result = (new MobileValid())->passes('','0932433');
         $this->assertEquals(0,$result);
 
     }

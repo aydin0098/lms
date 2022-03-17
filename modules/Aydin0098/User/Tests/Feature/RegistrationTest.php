@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Aydin0098\User\Tests\Feature;
 
 use Aydin0098\User\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -57,7 +57,7 @@ class RegistrationTest extends TestCase
 
             'name' => 'aydin0098',
             'email' => 'aydin.s.hagighy1378@gmail.com',
-            'mobile' => '09129157175',
+            'mobile' => '09398933139',
             'password' => '123456789',
             'password_confirmation' => '123456789'
 
