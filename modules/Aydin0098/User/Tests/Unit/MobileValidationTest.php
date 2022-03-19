@@ -12,15 +12,15 @@ class MobileValidationTest extends TestCase
      *
      * @return void
      */
-    public function test_mobile_can_not_be_less_then_11_character()
+    public function test_mobile_can_not_be_less_than_11_character()
     {
-        $result = (new MobileValid())->passes('','09398933139');
+        $result = (new MobileValid())->passes('','0939893313');
         $this->assertEquals(0,$result);
 
     }
-    public function test_mobile_can_not_be_more_then_11_character()
+    public function test_mobile_can_not_be_more_than_11_character()
     {
-        $result = (new MobileValid())->passes('','0932433');
+        $result = (new MobileValid())->passes('','093989331391');
         $this->assertEquals(0,$result);
 
     }

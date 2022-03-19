@@ -18,6 +18,21 @@ Route::get('/', function () {
     return view('front.index');
 });
 
+Route::get('/verify-link/{user}',function (){
+    if (request()->hasValidSignature()){
+        return 'ok';
+    }
+
+    return 'failed';
+
+})->name('verify.link');
+
+Route::get('/test',function (){
+    return new \Aydin0098\User\Mail\VerifyCodeMail(11111);
+});
+
+
+
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
