@@ -9,13 +9,6 @@
                     <img src="{{asset('front/img/weblogo.png')}}" alt="">
                 </a>
                 <div class="form-content form-account">
-                    <input type="hidden" name="token" value="{{ $token }}">
-                    <input type="text" name="email" class="txt txt-l @error('email') is-invalid @enderror" value="{{ $email ?? old('email') }}" placeholder="ایمیل">
-                    @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
                     <input type="text" name="password" class="txt txt-l @error('password') is-invalid @enderror" placeholder="رمز عبور">
                     @error('password')
                     <span class="invalid-feedback" role="alert">

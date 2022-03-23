@@ -4,8 +4,7 @@
     <main>
         <div class="account">
 
-            <form action="{{route('password.email')}}" class="form" method="post">
-                @csrf
+            <form action="{{route('password.sendVerifyCodeEmail')}}" class="form" method="get">
                 <a class="account-logo" href="/">
                     <img src="{{asset('front/img/weblogo.png')}}" alt="">
                 </a>
@@ -15,7 +14,7 @@
                     </div>
                 @endif
                 <div class="form-content form-account">
-                    <input type="text" name="email" class="txt-l txt  @error('email') is-invalid @enderror " placeholder="ایمیل">
+                    <input type="email" name="email" class="txt-l txt  @error('email') is-invalid @enderror " placeholder="ایمیل">
                     @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

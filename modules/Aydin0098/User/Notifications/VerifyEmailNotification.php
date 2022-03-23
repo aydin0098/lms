@@ -3,12 +3,13 @@
 namespace Aydin0098\User\Notifications;
 
 use Aydin0098\User\Mail\VerifyCodeMail;
+use Aydin0098\User\Services\VerifyCodeService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use function url;
 
-class VerifyEmail extends Notification
+class VerifyEmailNotification extends Notification
 {
     use Queueable;
 
@@ -42,15 +43,13 @@ class VerifyEmail extends Notification
      */
     public function toMail($notifiable)
     {
-        $code = random_int(100000,999999);
-        cache()->set(
-            'verify_code_' .$notifiable->id,
-            $code,
-            now()->addDay());
+        $code = VerifyCodeService::generate();
+        VerifyCodeService::store($notifiable->id, $code,120);
 
-        return ( new VerifyCodeMail($notifiable,$code))
-            ->to($notifiable->email)
-            ->subject('دیجی آکادمی | کد فعالسازی');
+
+
+        return ( new VerifyCodeMail($code))
+            ->to($notifiable->email);
     }
 
     /**

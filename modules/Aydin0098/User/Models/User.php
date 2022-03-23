@@ -2,7 +2,8 @@
 
 namespace Aydin0098\User\Models;
 
-use Aydin0098\User\Notifications\VerifyEmail;
+use Aydin0098\User\Notifications\ResetPasswordRequestNotification;
+use Aydin0098\User\Notifications\VerifyEmailNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -57,7 +58,12 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function sendEmailVerificationNotification()
     {
-       $this->notify(new VerifyEmail());
 
+       $this->notify(new VerifyEmailNotification());
+
+    }
+    public function sendResetPasswordRequestNotification()
+    {
+        $this->notify(new ResetPasswordRequestNotification());
     }
 }

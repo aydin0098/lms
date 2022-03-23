@@ -2,15 +2,13 @@
 
 namespace Aydin0098\User\Mail;
 
-use Aydin0098\User\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class VerifyCodeMail extends Mailable
+class ResetPasswordRequestMail extends Mailable
 {
     use Queueable, SerializesModels;
-
 
     public $code;
 
@@ -21,7 +19,6 @@ class VerifyCodeMail extends Mailable
      */
     public function __construct($code)
     {
-
         $this->code = $code;
     }
 
@@ -32,8 +29,8 @@ class VerifyCodeMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('User::mails.verify-mail')
-            ->subject('دیجی آکادمی | کد فعالسازی')
+        return $this->markdown('User::mails.reset-password-request-mail')
+            ->subject('دیجی آکادمی | بازیابی رمز عبور')
             ->with(['code' => $this->code]);
     }
 }
