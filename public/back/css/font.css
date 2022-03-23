@@ -1,0 +1,48 @@
+@font-face {
+    font-family: irs;
+    font-style: normal;
+    font-weight: bold;
+    src: url('../../back/fonts/iransans/eot/IRANSansBold.eot');
+    src: url('../../back/fonts/iransans/eot/IRANSansBold.eot?#iefix') format('embedded-opentype'), url('../../back/fonts/iransans/woff2/IRANSansBold.woff2') format('woff2'), url('../../back/fonts/iransans/woff/IRANSansBold.woff') format('woff'), url('../../back/fonts/iransans/ttf/IRANSansBold.ttf') format('truetype')
+}
+
+@font-face {
+    font-family: irs;
+    font-style: normal;
+    font-weight: 500;
+    src: url('../../back/fonts/iransans/eot/IRANSansBold.eot');
+    src: url('../../back/fonts/iransans/eot/IRANSansBold.eot?#iefix') format('embedded-opentype'), url('../../back/fonts/iransans/woff2/IRANSansBold.woff2') format('woff2'), url('../../back/fonts/iransans/woff/IRANSansBold.woff') format('woff'), url('../../back/fonts/iransans/ttf/IRANSansBold.ttf') format('truetype')
+}
+
+@font-face {
+    font-family: irs;
+    font-style: normal;
+    font-weight: 300;
+    src: url('../../back/fonts/iransans/eot/IRANSansBold.eot');
+    src: url('../../back/fonts/iransans/eot/IRANSansBold.eot?#iefix') format('embedded-opentype'), url('../../back/fonts/iransans/woff2/IRANSansBold.woff2') format('woff2'), url('../../back/fonts/iransans/woff/IRANSansBold.woff') format('woff'), url('../../back/fonts/iransans/ttf/IRANSansBold.ttf') format('truetype')
+}
+
+@font-face {
+    font-family: irs;
+    font-style: normal;
+    font-weight: 200;
+    src: url('../../back/fonts/iransans/eot/IRANSansBold.eot');
+    src: url('../../back/fonts/iransans/eot/IRANSansBold.eot?#iefix') format('embedded-opentype'), url('../../back/fonts/iransans/woff2/IRANSansBold.woff2') format('woff2'), url('../../back/fonts/iransans/woff/IRANSansBold.woff') format('woff'), url('../../back/fonts/iransans/ttf/IRANSansBold.ttf') format('truetype')
+}
+
+@font-face {
+    font-family: irs;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../../back/fonts/iransans/eot/IRANSansBold.eot');
+    src: url('../../back/fonts/iransans/eot/IRANSansBold.eot?#iefix') format('embedded-opentype'),
+    url('../../back/fonts/iransans/woff2/IRANSansBold.woff2') format('woff2'),
+    url('../../back/fonts/iransans/woff/IRANSansBold.woff') format('woff'),
+    url('../../back/fonts/iransans/ttf/IRANSansBold.ttf') format('truetype')
+}
+
+@font-face {
+    font-family: digikala;
+    src: url('../../back/fonts/digikala/digikala.eot');
+    src: url('../../back/fonts/digikala/digikala.eot?#iefix') format('embedded-opentype'), url('../../back/fonts/digikala/digikala.woff2') format('woff2'), url('../../back/fonts/digikala/digikala.woff') format('woff'), url('../../back/fonts/digikala/digikala.ttf') format('truetype')
+}

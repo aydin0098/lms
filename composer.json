@@ -25,7 +25,9 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "Aydin0098\\User\\" : "modules/Aydin0098/User/"
+            "Aydin0098\\User\\" : "modules/Aydin0098/User/",
+            "Aydin0098\\Dashboard\\" : "modules/Aydin0098/Dashboard/",
+            "Aydin0098\\Category\\" : "modules/Aydin0098/Category/"
         }
     },
     "autoload-dev": {

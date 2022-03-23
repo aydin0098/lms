@@ -164,6 +164,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         \Aydin0098\User\Providers\UserServiceProvider::class,
+        \Aydin0098\Dashboard\Providers\DashboardServiceProvider::class,
+        \Aydin0098\Category\Providers\CategoryServiceProvider::class,
 
         /*
          * Package Service Providers...
