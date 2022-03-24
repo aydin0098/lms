@@ -1,6 +1,6 @@
 <?php
 
-namespace Aydin0098\User\Database\Factories;
+namespace Database\Factories;
 
 use Aydin0098\User\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
