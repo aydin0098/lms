@@ -23,6 +23,11 @@ class CategoryServiceProvider extends ServiceProvider
             'url' => route('categories.index')
         ]);
 
+
+
+
+
+
     }
 
 }

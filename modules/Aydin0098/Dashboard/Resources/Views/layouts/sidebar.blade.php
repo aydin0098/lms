@@ -14,8 +14,7 @@
             <li class="item-li {{$sidebar['icon']}} @if($sidebar['url'] == request()->url()) is-active @endif"><a href="{{$sidebar['url']}}">{{$sidebar['title']}}</a></li>
         @endforeach
 {{--        <li class="item-li i-courses "><a href="courses.html">دوره ها</a></li>--}}
-{{--        <li class="item-li i-users"><a href="users.html"> کاربران</a></li>--}}
-{{--        <li class="item-li i-categories"><a href="categories.html">دسته بندی ها</a></li>--}}
+{{--        <li class="item-li i-user__inforamtion"><a href="users.html"> کاربران</a></li>--}}
 {{--        <li class="item-li i-slideshow"><a href="slideshow.html">اسلایدشو</a></li>--}}
 {{--        <li class="item-li i-banners"><a href="banners.html">بنر ها</a></li>--}}
 {{--        <li class="item-li i-articles"><a href="articles.html">مقالات</a></li>--}}

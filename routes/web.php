@@ -28,9 +28,10 @@ Route::get('/verify-link/{user}',function (){
 })->name('verify.link');
 
 Route::get('/test',function (){
-    return new \Aydin0098\User\Mail\VerifyCodeMail(11111);
+//    \Spatie\Permission\Models\Permission::create(['name' => 'manage role_permissions']);
+    \auth()->user()->givePermissionTo('manage role_permissions');
+    return \auth()->user()->permissions;
 });
-
 
 
 
