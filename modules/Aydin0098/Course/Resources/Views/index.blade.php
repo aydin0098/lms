@@ -1,6 +1,6 @@
 @extends('Dashboard::master')
 @section('breadcrumb')
-    <li><a href="{{route('role-permissions.index')}}" title="نقش های کاربری">نقش های کاربری</a></li>
+    <li><a href="{{route('courses.index')}}" title="دوره ها">دوره ها</a></li>
 @endsection
 @section('styles')
     <link rel="stylesheet" href="{{asset('back/select2.min.css')}}">
@@ -17,51 +17,80 @@
     </style>
 @endsection
 @section('content')
-    <div class="main-content padding-0 categories">
-        <div class="row no-gutters  ">
-            <div class="col-8 margin-left-10 margin-bottom-15 border-radius-3">
-                <p class="box__title">نقش های کاربری</p>
-                <div class="table__box">
-                    <table class="table">
-                        <thead role="rowgroup">
-                        <tr role="row" class="title-row">
-                            <th>شناسه</th>
-                            <th>نام نقش</th>
-                            <th>مجوز ها</th>
-                            <th>عملیات</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($roles as $role)
-                            <tr role="row" class="">
-                                <td><a href="">{{$role->id}}</a></td>
-                                <td><a href="">{{$role->name}}</a></td>
-                                <td>
-                                    <ul>
-                                        @foreach($role->permissions as $permission)
-                                            <li><span class="permissions">@lang($permission->name)</span></li>
-                                        @endforeach
-                                    </ul>
-                                </td>
-                                <td>
-                                    <a href=""
-                                       onclick="event.preventDefault(); deleteItem(event,'{{route('role-permissions.destroy',$role->id)}}')"
-                                       class="item-delete mlg-15" title="حذف"></a>
-                                    <a href="" target="_blank" class="item-eye mlg-15" title="مشاهده"></a>
-                                    <a href="{{route('role-permissions.edit',$role->id)}}" class="item-edit "
-                                       title="ویرایش"></a>
-                                </td>
-                            </tr>
-                        @endforeach
+    <div class="main-content">
+        <div class="tab__box">
+            <div class="tab__items">
+                <a class="tab__item is-active" href="{{route('courses.index')}}">لیست دوره ها</a>
+                <a class="tab__item" href="approved.html">دوره های تایید شده</a>
+                <a class="tab__item" href="new-course.html">دوره های تایید نشده</a>
+                <a class="tab__item" href="{{route('courses.create')}}">ایجاد دوره جدید</a>
+            </div>
+        </div>
+        <div class="bg-white padding-20">
+            <div class="t-header-search">
+{{--                <form action="" onclick="event.preventDefault();">--}}
+{{--                    <div class="t-header-searchbox font-size-13">--}}
+{{--                        <div type="text" class="text search-input__box ">جستجوی دوره</div>--}}
+{{--                        <div class="t-header-search-content ">--}}
+{{--                            <input type="text"  class="text"  placeholder="نام دوره">--}}
+{{--                            <input type="text"  class="text" placeholder="ردیف">--}}
+{{--                            <input type="text"  class="text" placeholder="قیمت">--}}
+{{--                            <input type="text"  class="text" placeholder="نام مدرس">--}}
+{{--                            <input type="text"  class="text margin-bottom-20" placeholder="دسته بندی">--}}
+{{--                            <btutton class="btn btn-brand">جستجو</btutton>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </form>--}}
+            </div>
+        </div>
+        <div class="table__box">
+            <table class="table">
 
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="col-4 bg-white">
-                <p class="box__title">ایجاد نقش جدید</p>
-                @include('RolePermissions::create')
-            </div>
+                <thead role="rowgroup">
+                <tr role="row" class="title-row">
+                    <th>شناسه</th>
+                    <th>تصویر دوره</th>
+                    <th>عنوان</th>
+                    <th>مدرس دوره</th>
+                    <th>قیمت (تومان)</th>
+                    <th>جزئیات</th>
+                    <th>تراکنش ها</th>
+                    <th>نظرات</th>
+                    <th>تعداد دانشجویان</th>
+                    <th>تعداد تایید</th>
+                    <th>درصد مدرس</th>
+                    <th>وضعیت دوره</th>
+                    <th>عملیات</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($courses as $course)
+                <tr role="row" >
+                    <td><a href="">{{$course->id}}</a></td>
+                    <td><a href=""><img width="80" src="{{$course->thumb}}"></a></td>
+                    <td><a href="">{{$course->title}}</a></td>
+                    <td><a href="">{{$course->teacher->name}}</a></td>
+                    <td>{{number_format($course->price)}}</td>
+                    <td><a href="course-detail.html" class="color-2b4a83">مشاهده</a></td>
+                    <td><a href="course-transaction.html" class="color-2b4a83" >مشاهده</a></td>
+                    <td><a href="" class="color-2b4a83" >مشاهده (10 نظر)</a></td>
+                    <td>120</td>
+                    <td>تایید شده</td>
+                    <td>{{$course->percent}}%</td>
+                    <td>@lang($course->status)</td>
+                    <td>
+                        <a href="" class="item-delete mlg-15" title="حذف"></a>
+                        <a href="" class="item-reject mlg-15" title="رد"></a>
+                        <a href="" class="item-lock mlg-15" title="قفل دوره"></a>
+                        <a href="" target="_blank" class="item-eye mlg-15" title="مشاهده"></a>
+                        <a href="" class="item-confirm mlg-15" title="تایید"></a>
+                        <a href="" class="item-edit " title="ویرایش"></a>
+                    </td>
+                </tr>
+                @endforeach
+
+                </tbody>
+            </table>
         </div>
     </div>
 @endsection

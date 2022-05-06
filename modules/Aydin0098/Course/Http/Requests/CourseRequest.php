@@ -31,13 +31,24 @@ class CourseRequest extends FormRequest
             'title' => 'required|max:190',
             'slug' => 'required|max:190|unique:courses,slug',
             'priority' => 'nullable|numeric',
-            'price' => 'required|numeric',
+            'price' => 'required|numeric|min:0|max:100000000000',
             'percent' => 'required|numeric',
             'teacher_id' => ['required','exists:users,id',new ValidTeacher()],
             'type' => ['required',Rule::in(Course::$types)],
-            'status' => ['required',Rule::in(Course::$types)],
+            'status' => ['required',Rule::in(Course::$statuses)],
             'category_id' => 'required|exists:categories,id',
             'image' => 'required|mimes:jpg,png,jpeg'
         ];
+    }
+
+    public function messages()
+    {
+        return [
+            'price.min' =>  trans('Course::validation.price_min'),
+            'price.max' =>  trans('Course::validation.price_max'),
+            'price.numeric' =>  trans('Course::validation.price_required'),
+            'price.required' =>  trans('Course::validation.price_required'),
+        ];
+
     }
 }

@@ -183,6 +183,7 @@ return [
         \Aydin0098\Category\Providers\CategoryServiceProvider::class,
         \Aydin0098\RolePermissions\Providers\RolePermissionServiceProvider::class,
         \Aydin0098\Course\Providers\CourseServiceProvider::class,
+        \Aydin0098\Media\Providers\MediaServiceProvider::class,
 
     ],
 
@@ -198,7 +199,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // ...
+        'Image' => Intervention\Image\Facades\Image::class,
     ])->toArray(),
 
 ];

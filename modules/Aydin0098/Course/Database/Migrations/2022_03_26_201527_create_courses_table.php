@@ -22,6 +22,9 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete();
 
+            $table->unsignedBigInteger('banner_id');
+            $table->foreign('banner_id')->references('id')->on('media')->cascadeOnDelete();
+
             $table->string('title');
             $table->string('slug');
             $table->float('priority')->nullable();
