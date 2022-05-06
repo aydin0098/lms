@@ -5,7 +5,7 @@ namespace Aydin0098\User\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Aydin0098\User\Models\User;
-use Aydin0098\User\Rules\MobileValid;
+use Aydin0098\User\Rules\ValidTeacher;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -53,7 +53,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'mobile' => ['nullable', 'string', 'max:11', 'unique:users',new MobileValid()],
+            'mobile' => ['nullable', 'string', 'max:11', 'unique:users',new ValidTeacher()],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }

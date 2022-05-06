@@ -1,6 +1,9 @@
 <?php
 namespace Aydin0098\Category\Providers;
 
+use Aydin0098\Category\Database\Seeders\CategorySeeder;
+use Aydin0098\RolePermissions\Database\Seeders\RolePermissionSeeder;
+use Database\Seeders\DatabaseSeeder;
 use Illuminate\Support\ServiceProvider;
 
 class CategoryServiceProvider extends ServiceProvider
@@ -12,6 +15,7 @@ class CategoryServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../Resources/Views','Category');
         $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
         $this->loadFactoriesFrom(__DIR__.'/../Database/Factories');
+        DatabaseSeeder::$seeders[] = CategorySeeder::class;
 
     }
 

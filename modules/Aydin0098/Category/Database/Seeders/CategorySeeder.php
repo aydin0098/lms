@@ -1,11 +1,9 @@
 <?php
 
-namespace Database\Seeders;
+namespace Aydin0098\Category\Database\Seeders;
 
 use Aydin0098\Category\Models\Category;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use phpDocumentor\Reflection\Types\Nullable;
 
 class CategorySeeder extends Seeder
 {

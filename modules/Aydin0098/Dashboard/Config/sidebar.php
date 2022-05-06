@@ -3,5 +3,6 @@ return [
     "items" => [
         "dashboard" => [],
         "categories" => [],
+        "courses" => [],
     ]
 ];

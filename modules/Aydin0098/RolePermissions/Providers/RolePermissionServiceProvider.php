@@ -1,6 +1,8 @@
 <?php
 namespace Aydin0098\RolePermissions\Providers;
 
+use Aydin0098\RolePermissions\Database\Seeders\RolePermissionSeeder;
+use Database\Seeders\DatabaseSeeder;
 use Illuminate\Support\ServiceProvider;
 
 class RolePermissionServiceProvider extends ServiceProvider
@@ -13,6 +15,7 @@ class RolePermissionServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
         $this->loadFactoriesFrom(__DIR__.'/../Database/Factories');
         $this->loadJsonTranslationsFrom(__DIR__.'/../Lang');
+        DatabaseSeeder::$seeders[] = RolePermissionSeeder::class;
 
     }
 

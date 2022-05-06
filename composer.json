@@ -29,7 +29,8 @@
             "Aydin0098\\User\\" : "modules/Aydin0098/User/",
             "Aydin0098\\Dashboard\\" : "modules/Aydin0098/Dashboard/",
             "Aydin0098\\Category\\" : "modules/Aydin0098/Category/",
-            "Aydin0098\\RolePermissions\\" : "modules/Aydin0098/RolePermissions/"
+            "Aydin0098\\RolePermissions\\" : "modules/Aydin0098/RolePermissions/",
+            "Aydin0098\\Course\\" : "modules/Aydin0098/Course/"
         }
     },
     "autoload-dev": {

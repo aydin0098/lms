@@ -181,7 +181,8 @@ return [
         \Aydin0098\User\Providers\UserServiceProvider::class,
         \Aydin0098\Dashboard\Providers\DashboardServiceProvider::class,
         \Aydin0098\Category\Providers\CategoryServiceProvider::class,
-        \Aydin0098\RolePermissions\Providers\RolePermissionServiceProvider::class
+        \Aydin0098\RolePermissions\Providers\RolePermissionServiceProvider::class,
+        \Aydin0098\Course\Providers\CourseServiceProvider::class,
 
     ],
 

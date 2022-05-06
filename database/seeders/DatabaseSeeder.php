@@ -12,10 +12,16 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
+
+    public static $seeders = [];
+
     public function run()
     {
-        $this->call(UserSeeder::class);
-        $this->call(CategorySeeder::class);
+        foreach (self::$seeders as $seeder){
+            $this->call($seeder);
+        }
+//        $this->call(UserSeeder::class);
+//        $this->call(CategorySeeder::class);
         // \Aydin0098\User\Models\User::factory(10)->create();
     }
 }

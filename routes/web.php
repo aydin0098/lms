@@ -28,7 +28,7 @@ Route::get('/verify-link/{user}',function (){
 })->name('verify.link');
 
 Route::get('/test',function (){
-//    \Spatie\Permission\Models\Permission::create(['name' => 'manage role_permissions']);
+//    \Spatie\Permission\Models\Permission::create(['name' => 'manage courses']);
     \auth()->user()->givePermissionTo('manage role_permissions');
     return \auth()->user()->permissions;
 });
