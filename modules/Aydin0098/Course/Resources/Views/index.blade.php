@@ -57,7 +57,7 @@
                     <th>تراکنش ها</th>
                     <th>نظرات</th>
                     <th>تعداد دانشجویان</th>
-                    <th>تعداد تایید</th>
+                    <th> وضعیت</th>
                     <th>درصد مدرس</th>
                     <th>وضعیت دوره</th>
                     <th>عملیات</th>
@@ -67,7 +67,7 @@
                 @foreach($courses as $course)
                 <tr role="row" >
                     <td><a href="">{{$course->id}}</a></td>
-                    <td><a href=""><img width="80" src="{{$course->thumb}}"></a></td>
+                    <td><a href=""><img width="80" src="{{$course->banner->thumb}}"></a></td>
                     <td><a href="">{{$course->title}}</a></td>
                     <td><a href="">{{$course->teacher->name}}</a></td>
                     <td>{{number_format($course->price)}}</td>
@@ -75,16 +75,19 @@
                     <td><a href="course-transaction.html" class="color-2b4a83" >مشاهده</a></td>
                     <td><a href="" class="color-2b4a83" >مشاهده (10 نظر)</a></td>
                     <td>120</td>
-                    <td>تایید شده</td>
+                    <td class="confirm_status">@lang($course->confirmation_status)</td>
                     <td>{{$course->percent}}%</td>
-                    <td>@lang($course->status)</td>
+                    <td class="status">@lang($course->status)</td>
                     <td>
-                        <a href="" class="item-delete mlg-15" title="حذف"></a>
-                        <a href="" class="item-reject mlg-15" title="رد"></a>
-                        <a href="" class="item-lock mlg-15" title="قفل دوره"></a>
+                        <a href="" onclick="event.preventDefault(); deleteItem(event,'{{route('courses.destroy',$course->id)}}')" class="item-delete mlg-15" title="حذف"></a>
+                        <a href="" onclick="updateConfirmationStatus(event,'{{route('courses.reject',$course->id)}}'
+                            ,'ایا از رد ایتم انتخابی مطمئن هستید ؟','رد شده' )" class="item-reject mlg-15" title="رد"></a>
+                        <a href="" onclick="updateConfirmationStatus(event,'{{route('courses.lock',$course->id)}}'
+                            ,'ایا از قفل ایتم انتخابی مطمئن هستید ؟','قفل شده','status')" class="item-lock mlg-15" title="قفل دوره"></a>
                         <a href="" target="_blank" class="item-eye mlg-15" title="مشاهده"></a>
-                        <a href="" class="item-confirm mlg-15" title="تایید"></a>
-                        <a href="" class="item-edit " title="ویرایش"></a>
+                        <a href="" onclick="updateConfirmationStatus(event,'{{route('courses.accept',$course->id)}}'
+                            ,'ایا از تایید ایتم انتخابی مطمئن هستید ؟','تایید شده')" class="item-confirm mlg-15 " title="تایید"></a>
+                        <a href="{{route('courses.edit',$course->id)}}" class="item-edit " title="ویرایش"></a>
                     </td>
                 </tr>
                 @endforeach
@@ -97,6 +100,29 @@
 @section('scripts')
     <script src="{{asset('back/select2.min.js')}}"></script>
     <script>
+
+        function updateConfirmationStatus(event,route,message,status,field = 'confirm_status'){
+            event.preventDefault();
+            if (confirm(message)) {
+                $.post(route, {_method: "PATCH", _token: "{{csrf_token()}}"})
+                    .done(function (response) {
+                        $(event.target).closest('tr').find('td.'+field).text(status);
+                        $.toast({
+                            heading: 'عملیات موفق',
+                            text: response.message,
+                            showHideTransition: 'slide',
+                            icon: 'success',
+                            position: 'top-left',
+                        })
+
+                    })
+                    .fail(function (response) {
+
+                    });
+            }
+        }
+
+        //delete Item
         function deleteItem(event, route) {
             if (confirm('ایا از حذف ایتم انتخابی مطمئن هستید ؟')) {
                 $.post(route, {_method: "delete", _token: "{{csrf_token()}}"})

@@ -14,11 +14,13 @@ class FileUpload extends Component
     public $name;
     public $type;
     public $placeholder;
-    public function __construct($name,$type,$placeholder)
+    public $value;
+    public function __construct($name,$type,$placeholder,$value=null)
     {
         $this->name = $name;
         $this->type = $type;
         $this->placeholder = $placeholder;
+        $this->value = $value;
     }
 
     /**

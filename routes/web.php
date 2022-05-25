@@ -29,7 +29,7 @@ Route::get('/verify-link/{user}',function (){
 
 Route::get('/test',function (){
 //    \Spatie\Permission\Models\Permission::create(['name' => 'manage courses']);
-    \auth()->user()->givePermissionTo('manage role_permissions');
+    \auth()->user()->givePermissionTo(\Aydin0098\RolePermissions\Models\Permission::PERMISSION_SUPER_ADMIN);
     return \auth()->user()->permissions;
 });
 

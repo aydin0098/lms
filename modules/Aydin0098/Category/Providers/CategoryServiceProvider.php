@@ -2,8 +2,11 @@
 namespace Aydin0098\Category\Providers;
 
 use Aydin0098\Category\Database\Seeders\CategorySeeder;
+use Aydin0098\Category\Models\Category;
+use Aydin0098\Category\Policies\CategoryPolicy;
 use Aydin0098\RolePermissions\Database\Seeders\RolePermissionSeeder;
 use Database\Seeders\DatabaseSeeder;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class CategoryServiceProvider extends ServiceProvider
@@ -16,6 +19,7 @@ class CategoryServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
         $this->loadFactoriesFrom(__DIR__.'/../Database/Factories');
         DatabaseSeeder::$seeders[] = CategorySeeder::class;
+        Gate::policy(Category::class,CategoryPolicy::class);
 
     }
 

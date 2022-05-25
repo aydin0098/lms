@@ -5,5 +5,11 @@
         <x-validation-error field="{{$name}}"/>
     </div>
     <span class="filesize"></span>
-    <span class="selectedFiles">فایلی انتخاب نشده است</span>
+    @if(isset($value))
+        <img src="{{$value->thumb}}" style="display: block;margin: 0 auto">
+
+    @else
+        <span class="selectedFiles">فایلی انتخاب نشده است</span>
+    @endif
+
 </div>

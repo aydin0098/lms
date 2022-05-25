@@ -3,6 +3,7 @@
 namespace Aydin0098\Category\Tests\Feature;
 
 use Aydin0098\Category\Models\Category;
+use Aydin0098\RolePermissions\Database\Seeders\RolePermissionSeeder;
 use Aydin0098\User\Database\Factories\UserFactory;
 use Aydin0098\User\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -18,22 +19,34 @@ class CategoryTest extends TestCase
      *
      * @return void
      */
-    public function test_authenticated_user_can_see_categories_panel()
+    public function test_manage_categories_permission_holders_can_see_categories_panel()
     {
         $this->actionAsAdmin();
+        $this->seed(RolePermissionSeeder::class);
+        auth()->user()->givePermissionTo('manage categories');
         $this->get(route('categories.index'))->assertOk();
+
+    }
+    public function test_normal_user_can_not_see_categories_panel()
+    {
+        $this->actionAsAdmin();
+        $this->get(route('categories.index'))->assertStatus(403);
 
     }
     public function test_user_can_create_category()
     {
         $this->actionAsAdmin();
+        $this->seed(RolePermissionSeeder::class);
+        auth()->user()->givePermissionTo('manage categories');
         $this->createCategory();
         $this->assertEquals(1,Category::all()->count());
 
     }
-    public function test_user_can_update_category()
+    public function test_permitted_user_can_update_category()
     {
         $this->actionAsAdmin();
+        $this->seed(RolePermissionSeeder::class);
+        auth()->user()->givePermissionTo('manage categories');
         $this->createCategory();
         $this->assertEquals(1,Category::all()->count());
         $this->post(route('categories.update',1),['title' => $this->faker->word , 'slug' => $this->faker->word]);
@@ -42,6 +55,8 @@ class CategoryTest extends TestCase
     public function test_user_can_delete_category()
     {
         $this->actionAsAdmin();
+        $this->seed(RolePermissionSeeder::class);
+        auth()->user()->givePermissionTo('manage categories');
         $this->createCategory();
         $this->assertEquals(1,Category::all()->count());
         $this->delete(route('categories.destroy',1))->assertOk();

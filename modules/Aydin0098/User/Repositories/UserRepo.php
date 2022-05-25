@@ -2,6 +2,7 @@
 
 namespace Aydin0098\User\Repositories;
 
+use Aydin0098\RolePermissions\Models\Permission;
 use Aydin0098\User\Models\User;
 
 class UserRepo
@@ -14,7 +15,7 @@ class UserRepo
 
     public function getTeachers()
     {
-        return User::permission('teach')->get();
+        return User::permission(Permission::PERMISSION_TEACH)->get();
 
     }
 

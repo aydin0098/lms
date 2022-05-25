@@ -2,6 +2,7 @@
 
 namespace Aydin0098\Media\Services;
 
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class ImageFIleService
@@ -21,7 +22,7 @@ class ImageFIleService
     private static function resize($img,$dir,$fileName,$extension)
     {
         $img = Image::make($img);
-        $imgs['original'] = $fileName .$extension;
+        $imgs['original'] = $fileName.'.'.$extension;
         foreach (self::$sizes as $size){
 
             $imgs[$size] = $fileName.'_'.$size.'.'.$extension;
@@ -33,6 +34,13 @@ class ImageFIleService
 
         return $imgs;
 
+    }
+
+    public static function delete($media)
+    {
+        foreach ($media->files as $file){
+            Storage::delete('public\\'.$file);
+        }
     }
 
 }

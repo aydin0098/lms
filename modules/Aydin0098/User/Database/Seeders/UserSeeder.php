@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Aydin0098\User\Database\Seeders;
 
 use Aydin0098\Category\Models\Category;
 use Aydin0098\User\Models\User;
@@ -19,8 +19,8 @@ class UserSeeder extends Seeder
     {
         $users = [
             1 => [
-                'name' => 'test',
-                'email' => 'test@gmail.com',
+                'name' => 'aydin0098',
+                'email' => 'aydin.s.hagighy@gmail.com',
                 'password' => '123456789',
                 'email_verified_at' => now(),
                 'status' => 'active'

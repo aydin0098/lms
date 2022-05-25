@@ -2,10 +2,12 @@
 
 namespace Aydin0098\User\Tests\Feature;
 
+use Aydin0098\RolePermissions\Database\Seeders\RolePermissionSeeder;
 use Aydin0098\User\Models\User;
 use Aydin0098\User\Services\VerifyCodeService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class RegistrationTest extends TestCase
@@ -28,7 +30,8 @@ class RegistrationTest extends TestCase
         $this->withoutExceptionHandling();
         $response = $this->registerNewUser();
         $response->assertRedirect(route('home'));
-        $this->assertCount(1,User::all());
+
+        $this->assertCount(1, User::all());
 
     }
 
@@ -78,9 +81,9 @@ class RegistrationTest extends TestCase
         return $this->post(route('register'), [
 
             'name' => 'aydin0098',
-            'email' => 'aydin.s.hagighy1378@gmail.com',
+            'email' => 'aydin.s.hagighy@gmail.com',
             'mobile' => '09398933139',
-            'password' => '123456789',
+            'password' => Hash::make('123456789'),
             'password_confirmation' => '123456789'
 
         ]);

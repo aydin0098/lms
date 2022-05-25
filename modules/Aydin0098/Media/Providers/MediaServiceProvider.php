@@ -2,7 +2,7 @@
 namespace Aydin0098\Media\Providers;
 
 use Aydin0098\RolePermissions\Database\Seeders\RolePermissionSeeder;
-use Database\Seeders\DatabaseSeeder;
+use Aydin0098\User\Database\Seeders\DatabaseSeeder;
 use Illuminate\Support\ServiceProvider;
 
 class MediaServiceProvider extends ServiceProvider

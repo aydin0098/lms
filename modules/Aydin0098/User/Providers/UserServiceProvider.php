@@ -2,7 +2,10 @@
 
 namespace Aydin0098\User\Providers;
 
+use Aydin0098\RolePermissions\Database\Seeders\RolePermissionSeeder;
 use Aydin0098\User\Models\User;
+use Aydin0098\User\Database\Seeders\UserSeeder;
+use Database\Seeders\DatabaseSeeder;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\ServiceProvider;
 
@@ -23,6 +26,7 @@ class UserServiceProvider extends ServiceProvider
         Factory::guessFactoryNamesUsing(function (string $modelName) {
             return 'Aydin0098\User\Database\Factories\\' . class_basename($modelName) .'Factory' ;
         });
+        DatabaseSeeder::$seeders[] = UserSeeder::class;
 
 
     }

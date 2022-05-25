@@ -1,8 +1,13 @@
 <?php
 namespace Aydin0098\Course\Providers;
 
+use Aydin0098\Course\Models\Course;
+use Aydin0098\Course\Policies\CategoryPolicy;
+use Aydin0098\Course\Policies\CoursePolicy;
 use Aydin0098\RolePermissions\Database\Seeders\RolePermissionSeeder;
+use Aydin0098\RolePermissions\Models\Permission;
 use Database\Seeders\DatabaseSeeder;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class CourseServiceProvider extends ServiceProvider
@@ -17,6 +22,10 @@ class CourseServiceProvider extends ServiceProvider
         $this->loadJsonTranslationsFrom(__DIR__.'/../Lang');
         $this->loadTranslationsFrom(__DIR__.'/../Lang/','Course');
         DatabaseSeeder::$seeders[] =  RolePermissionSeeder::class;
+        Gate::policy(Course::class,CoursePolicy::class);
+        Gate::before(function ($user){
+            return $user->hasPermissionTo(Permission::PERMISSION_SUPER_ADMIN) ? true : null;
+        });
     }
 
     public function boot()

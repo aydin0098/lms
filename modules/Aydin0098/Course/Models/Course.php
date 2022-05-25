@@ -4,6 +4,7 @@ namespace Aydin0098\Course\Models;
 
 use Aydin0098\Media\Models\Media;
 use Aydin0098\User\Models\User;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,11 +21,13 @@ class Course extends Model
     const STATUS_LOCKED = 'locked';
     static $statuses = [self::STATUS_COMPLETED, self::STATUS_NOT_COMPLETED, self::STATUS_LOCKED];
 
-    public function getThumbAttribute()
-    {
-        return '/storage/'. $this->banner->files[300];
+    const CONFIRMATION_STATUS_ACCEPTED = 'accepted';
+    const CONFIRMATION_STATUS_REJECTED = 'rejected';
+    const CONFIRMATION_STATUS_PENDING = 'pending';
+    static $confirmationStatuses = [self::CONFIRMATION_STATUS_ACCEPTED, self::CONFIRMATION_STATUS_REJECTED, self::CONFIRMATION_STATUS_PENDING];
 
-    }
+
+
 
     public function banner()
     {

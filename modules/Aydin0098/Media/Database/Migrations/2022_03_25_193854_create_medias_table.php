@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('media', function (Blueprint $table) {
+        Schema::create('medias', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->bigInteger('user_id')->unsigned();
             $table->json('files');
-            $table->enum('type',['image','video','audio','zip','doc','pdf']);
-            $table->string('filename',255);
+            $table->enum('type', ['image', 'video', 'audio', 'zip', 'doc']);
+            $table->string('filename', 255);
+            $table->boolean('is_private');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('media');
+        Schema::dropIfExists('medias');
     }
 };

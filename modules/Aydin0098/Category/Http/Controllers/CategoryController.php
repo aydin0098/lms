@@ -26,6 +26,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $this->authorize('manage',Category::class);
         $categories = $this->repo->all();
         return view('Category::index',compact('categories'));
     }

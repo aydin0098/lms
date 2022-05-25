@@ -4,7 +4,7 @@ namespace Aydin0098\Media\Services;
 
 use Aydin0098\Media\Models\Media;
 
-class MediaUploadService
+class MediaFileService
 {
 
     public static function upload($file)
@@ -32,6 +32,15 @@ class MediaUploadService
 
         }
 
+    }
+
+    public static function delete($media)
+    {
+        switch ($media->type){
+            case "image" :
+                ImageFIleService::delete($media);
+                break;
+        }
     }
 
 }
